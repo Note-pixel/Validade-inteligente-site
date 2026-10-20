@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Despensa · Validade Inteligente</title>
+</head>
+<body data-page="despensa">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="shell">
+<main class="main" id="conteudo">
+  <header class="head"><h1>Despensa</h1><p class="muted" id="contagem"></p></header>
+  <form id="form-busca" role="search" class="field" style="max-width:520px">
+    <label for="busca">Buscar alimento</label>
+    <input id="busca" type="search" placeholder="Ex.: tomate" autocomplete="off">
+  </form>
+  <div class="fchips" id="filtros" role="group" aria-label="Filtros"></div>
+  <div id="grupos" aria-live="polite"></div>
+  <div class="card vazio" id="vazio" hidden><h3>Nada por aqui</h3><p class="muted">Nenhum alimento encontrado.</p><p style="margin-top:16px"><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></p></div>
+</main>
+</div>
+<script src="js/app.js"></script><script src="js/despensa.js"></script>
+</body>
+</html>
