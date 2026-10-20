@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Adicionar alimento · Validade Inteligente</title>
+</head>
+<body data-page="cadastrar">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="shell">
+<main class="main" id="conteudo">
+  <header class="head"><h1>Adicionar alimento</h1><p class="muted" id="total"></p></header>
+  <form class="card" id="form-alimento" novalidate style="max-width:640px">
+    <div class="field"><label for="nome">Nome do alimento</label><input id="nome" name="nome" type="text" placeholder="Ex.: Leite integral" autocomplete="off" aria-describedby="e-nome"><span class="err" id="e-nome" role="alert"></span></div>
+    <div class="two">
+      <div class="field"><label for="validade">Validade</label><input id="validade" name="validade" type="date" aria-describedby="e-validade"><span class="err" id="e-validade" role="alert"></span></div>
+      <div class="field"><label for="qtd">Quantidade</label><input id="qtd" name="qtd" type="text" placeholder="Ex.: 2 unidades" autocomplete="off"><span class="err"></span></div>
+    </div>
+    <div class="field"><label for="local">Onde você guarda?</label><select id="local" name="local"><option>Geladeira</option><option>Armário</option><option>Freezer</option></select></div>
+    <button class="btn primary" type="submit" style="width:100%">Salvar alimento</button>
+  </form>
+</main>
+</div>
+<script src=""></script><script src="js/cadastrar.js"></script>
+</body>
+</html>
