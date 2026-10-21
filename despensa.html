@@ -11,8 +11,10 @@
 <body data-page="despensa">
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 <div class="shell">
+<aside class="side"><a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><nav aria-label="Principal"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a></nav><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></aside>
+<nav class="tabbar" aria-label="Navegação"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a class="fab" href="cadastrar.html" aria-label="Adicionar alimento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a><a href="despensa.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a></nav>
 <main class="main" id="conteudo">
-  <header class="head"><h1>Despensa</h1><p class="muted" id="contagem"></p></header>
+  <header class="head topo"><button class="icon-btn" type="button" data-voltar data-fallback="inicio.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Despensa</h1><p class="muted" id="contagem"></p></div></header>
   <form id="form-busca" role="search" class="field" style="max-width:520px">
     <label for="busca">Buscar alimento</label>
     <input id="busca" type="search" placeholder="Ex.: tomate" autocomplete="off">
@@ -23,5 +25,6 @@
 </main>
 </div>
 <script src="js/app.js"></script><script src="js/despensa.js"></script>
+<script src="js/transicao.js"></script>
 </body>
 </html>

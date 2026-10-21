@@ -9,8 +9,15 @@ const limpaErros = () => {
   ['nome', 'validade'].forEach(id => { document.getElementById(`e-${id}`).textContent = ''; campo(id).removeAttribute('aria-invalid'); });
 };
 
+const previa = () => {
+  document.getElementById('previa').innerHTML = VI.item({ nome: campo('nome').value.trim() || 'Seu alimento', qtd: campo('qtd').value.trim() || '1 unidade', local: campo('local').value, validade: campo('validade').value || VI.addDias(7) });
+};
+
 campo('validade').value = VI.addDias(7);
 mostraTotal();
+previa();
+form.addEventListener('input', previa);
+form.addEventListener('change', previa);
 
 form.addEventListener('submit', e => {
   e.preventDefault();
@@ -33,5 +40,6 @@ form.addEventListener('submit', e => {
   form.reset();
   campo('validade').value = VI.addDias(7);
   mostraTotal();
+  previa();
   campo('nome').focus();
 });

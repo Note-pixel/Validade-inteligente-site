@@ -44,33 +44,12 @@ const VI = (() => {
     return `<li class="item s-${s.k}"><div class="tile" aria-hidden="true">${esc(a.nome.charAt(0).toUpperCase())}</div><div class="info"><h3>${esc(a.nome)}</h3><p class="muted">${esc(a.qtd)} · ${esc(a.local)}</p><span class="chip"><i></i>${s.t}</span>${botoes}</div>${ring(d)}</li>`;
   };
 
-  const ICONES = {
-    inicio: '<path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
-    despensa: '<path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/>',
-    add: '<path d="M12 5v14M5 12h14"/>'
-  };
-  const svg = k => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICONES[k]}</svg>`;
-  const montaNav = () => {
-    const shell = document.querySelector('.shell');
-    if (!shell) return;
-    const pg = document.body.dataset.page;
-    const link = (k, t, h) => `<a href="${h}"${pg === k ? ' aria-current="page"' : ''}>${svg(k)}<span>${t}</span></a>`;
-    const side = document.createElement('aside');
-    side.className = 'side';
-    side.innerHTML = `<a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><nav aria-label="Principal">${link('inicio', 'Início', 'inicio.html')}${link('despensa', 'Despensa', 'despensa.html')}</nav><a class="btn primary" href="cadastrar.html">Adicionar alimento</a>`;
-    shell.prepend(side);
-    const tab = document.createElement('nav');
-    tab.className = 'tabbar';
-    tab.setAttribute('aria-label', 'Navegação');
-    tab.innerHTML = `${link('inicio', 'Início', 'inicio.html')}<a class="fab" href="cadastrar.html" aria-label="Adicionar alimento">${svg('add')}</a>${link('despensa', 'Despensa', 'despensa.html')}`;
-    document.body.appendChild(tab);
-  };
   const toast = msg => {
     let t = document.querySelector('.toast');
     if (!t) { t = document.createElement('div'); t.className = 'toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
     t.textContent = msg; t.classList.add('show');
     clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2400);
   };
-  return { load, save, dias, status, ring, item, esc, toast, addDias, montaNav };
+  const usuario = () => { try { return JSON.parse(localStorage.getItem('vi:usuario')); } catch (e) { return null; } };
+  return { usuario, load, save, dias, status, ring, item, esc, toast, addDias };
 })();
-VI.montaNav();

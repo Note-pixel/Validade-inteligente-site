@@ -1,4 +1,6 @@
 'use strict';
+const quem = VI.usuario();
+document.getElementById('saudacao').textContent = `Olá, ${quem && quem.nome ? quem.nome.split(' ')[0] : 'Milena'}`;
 const itens = VI.load().slice().sort((a, b) => VI.dias(a.validade) - VI.dias(b.validade));
 const total = { ok: 0, so: 0, ex: 0 };
 itens.forEach(a => { const k = VI.status(VI.dias(a.validade)).k; total[k === 'wn' ? 'ok' : k]++; });
