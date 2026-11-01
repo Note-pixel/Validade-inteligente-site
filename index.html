@@ -5,32 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<title>Validade Inteligente · Saiba o que vence antes de perder</title>
-<meta name="description" content="Controle a validade dos alimentos da sua casa, receba alertas e reduza o desperdício.">
+<link rel="stylesheet" href="css/estilo.css">
+<title>Início · Validade Inteligente</title>
 </head>
-<body>
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<header class="top"><a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><span style="display:flex;gap:8px"><a class="btn ghost sm" href="login.html">Entrar</a><a class="btn primary sm" href="cadastro.html">Criar conta</a></span></header>
-<main class="lp" id="conteudo">
-  <section class="lp-hero" aria-labelledby="t-hero">
-    <div><p class="eyebrow">Menos desperdício, mais sabor</p><h1 id="t-hero">Saiba o que vence antes de perder.</h1>
-      <p>Cadastre os alimentos da sua casa, acompanhe a validade de cada um e use primeiro o que vence primeiro.</p>
-      <div class="acoes"><a class="btn primary" href="cadastro.html">Começar agora</a><a class="btn ghost" href="#como">Como funciona</a></div></div>
-    <div class="lp-demo" aria-label="Exemplo de como os alimentos aparecem no app"><ul class="stack" id="demo"></ul></div>
+<body data-pagina="inicio">
+
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+<main class="principal" id="conteudo">
+  <header class="cabecalho topo topo-espacado"><div><h1 id="saudacao">Olá</h1><p class="texto-suave">Veja o que vence primeiro.</p></div><a class="botao botao-contorno botao-pequeno" href="alertas.html">Alertas</a></header>
+  <section class="grade-resumo" aria-label="Resumo da despensa">
+    <div class="resumo situacao-seguro"><strong id="total-seguros">0</strong><span>Seguros</span></div>
+    <div class="resumo situacao-breve"><strong id="total-breve">0</strong><span>Vencendo</span></div>
+    <div class="resumo situacao-vencido"><strong id="total-vencidos">0</strong><span>Vencidos</span></div>
   </section>
-  <section id="como" aria-labelledby="t-como"><h2 id="t-como">Como funciona</h2>
-    <div class="feat">
-      <article class="card"><div class="num" aria-hidden="true">1</div><h3>Cadastre</h3><p class="muted">Informe o alimento, a quantidade, onde guarda e a data de validade.</p></article>
-      <article class="card"><div class="num" aria-hidden="true">2</div><h3>Acompanhe</h3><p class="muted">Cores e contagem regressiva mostram o que está seguro, vencendo ou vencido.</p></article>
-      <article class="card"><div class="num" aria-hidden="true">3</div><h3>Aproveite</h3><p class="muted">Consuma a tempo e evite jogar comida fora.</p></article>
-    </div></section>
-  <section class="meta" aria-labelledby="t-meta"><h2 id="t-meta">Uma meta: reduzir 25% do desperdício</h2>
-    <p>Projeto de Trabalho de Conclusão de Curso do Curso Técnico em Informática, alinhado ao ODS 12 da ONU: consumo e produção responsáveis.</p></section>
+  <div class="colunas">
+    <section aria-labelledby="titulo-proximo"><h2 id="titulo-proximo">Próximo a vencer</h2><div id="destaque"></div></section>
+    <section aria-labelledby="titulo-lista"><h2 id="titulo-lista">Vence primeiro</h2><ul class="pilha" id="lista"></ul></section>
+  </div>
 </main>
-<footer class="rod">Escola Técnica Estadual Monteiro Lobato · Taquara, 2026 · Milena de Quadros</footer>
-<script src="js/app.js"></script>
-<script>document.getElementById('demo').innerHTML = VI.load().slice().sort(function (a, b) { return VI.dias(a.validade) - VI.dias(b.validade); }).slice(0, 3).map(function (a) { return VI.item(a); }).join('');</script>
-<script src="js/transicao.js"></script>
+<script src="js/nucleo.js"></script><script src="js/inicio.js"></script>
 </body>
 </html>

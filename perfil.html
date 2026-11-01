@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Perfil · Validade Inteligente</title>
+</head>
+<body data-page="perfil">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="shell">
+<aside class="side"><a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><nav aria-label="Principal"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="receitas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a1 1 0 0 1 1-1h7v16H5a1 1 0 0 1-1-1zM12 4h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/></svg><span>Receitas</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a><a href="impacto.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Meu impacto</span></a><a href="alexa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span>Alexa</span></a><a href="perfil.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg><span>Perfil</span></a></nav><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></aside>
+<nav class="tabbar" aria-label="Navegação"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a class="fab" href="cadastrar.html" aria-label="Adicionar alimento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a><a href="receitas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a1 1 0 0 1 1-1h7v16H5a1 1 0 0 1-1-1zM12 4h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/></svg><span>Receitas</span></a><a href="perfil.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg><span>Perfil</span></a></nav>
+<main class="main" id="conteudo">
+  <header class="head topo"><button class="icon-btn" type="button" data-voltar data-fallback="inicio.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Perfil</h1><p class="muted">Seus dados e preferências</p></div></header>
+  <form class="card secao" id="form-perfil" novalidate>
+    <h2>Seus dados</h2>
+    <div class="cols2">
+      <div class="field"><label for="p-nome">Nome</label><input id="p-nome" type="text" autocomplete="name" aria-describedby="e-p-nome"><span class="err" id="e-p-nome" role="alert"></span></div>
+      <div class="field"><label for="p-email">E-mail</label><input id="p-email" type="email" disabled><span class="err"></span></div>
+    </div>
+    <button class="btn primary sm" type="submit" style="justify-self:start">Salvar dados</button>
+  </form>
+  <form class="card secao" id="form-config" novalidate>
+    <h2>Alertas</h2>
+    <label class="switch" for="c-avisos"><span><strong>Receber avisos</strong><br><span class="muted">Mostra os alertas de validade no site.</span></span><input id="c-avisos" type="checkbox"></label>
+    <div class="cols2">
+      <div class="field"><label for="c-ant">Avisar quantos dias antes?</label><select id="c-ant"><option value="1">1 dia</option><option value="2">2 dias</option><option value="3">3 dias</option><option value="5">5 dias</option><option value="7">7 dias</option></select></div>
+      <div class="field"><label for="c-hora">Horário do lembrete</label><input id="c-hora" type="time"></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn primary sm" type="submit">Salvar alertas</button><button class="btn ghost sm" type="button" id="btn-notif">Ativar avisos no navegador</button></div>
+  </form>
+  <section class="card secao" aria-labelledby="t-int">
+    <h2 id="t-int">Integrações</h2>
+    <a class="linha" href="alexa.html"><span><strong>Alexa</strong><br><span class="muted">Cadastre alimentos por voz</span></span><span class="icon-btn" aria-hidden="true" style="transform:rotate(180deg)"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></span></a>
+  </section>
+  <section class="card secao" aria-labelledby="t-dados">
+    <h2 id="t-dados">Conta e dados</h2>
+    <p class="muted" id="sessao"></p>
+    <p class="muted">Seus alimentos, histórico e preferências ficam guardados neste navegador (localStorage). Nada é enviado para a internet.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn ghost sm" type="button" id="btn-sair">Sair da conta</button><button class="btn danger sm" type="button" id="btn-apagar">Apagar todos os dados</button></div>
+  </section>
+</main>
+</div>
+<script src="js/app.js"></script><script src="js/perfil.js"></script>
+<script src="js/transicao.js"></script>
+</body>
+</html>

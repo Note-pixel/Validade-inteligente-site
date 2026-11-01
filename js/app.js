@@ -51,5 +51,26 @@ const VI = (() => {
     clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('show'), 2400);
   };
   const usuario = () => { try { return JSON.parse(localStorage.getItem('vi:usuario')); } catch (e) { return null; } };
-  return { usuario, load, save, dias, status, ring, item, esc, toast, addDias };
+  const HK = 'vi:historico';
+  const NOMES = ['Leite integral', 'Tomate', 'Pão de forma', 'Iogurte natural', 'Frango congelado', 'Arroz', 'Queijo', 'Banana'];
+  const historico = () => {
+    try { const h = JSON.parse(localStorage.getItem(HK)); if (Array.isArray(h)) return h; } catch (e) { /* recomeça com exemplo */ }
+    const h = Array.from({ length: 23 }, (_, i) => ({ tipo: [4, 9, 14, 19, 22].includes(i) ? 'd' : 'c', nome: NOMES[i % 8], data: addDias(-(i + 1)) }));
+    try { localStorage.setItem(HK, JSON.stringify(h)); } catch (e) { /* sem armazenamento */ }
+    return h;
+  };
+  const registrar = (tipo, nome) => {
+    const h = historico().slice(); h.unshift({ tipo, nome, data: addDias(0) });
+    try { localStorage.setItem(HK, JSON.stringify(h)); } catch (e) { /* sem armazenamento */ }
+  };
+  const CK = 'vi:config';
+  const config = () => {
+    const base = { antecedencia: 3, horario: '18:00', avisos: true };
+    try { const c = JSON.parse(localStorage.getItem(CK)); if (c && typeof c === 'object') return Object.assign(base, c); } catch (e) { /* usa o padrão */ }
+    return base;
+  };
+  const salvarConfig = c => { try { localStorage.setItem(CK, JSON.stringify(c)); } catch (e) { /* sem armazenamento */ } };
+  const salvarUsuario = u => { try { localStorage.setItem('vi:usuario', JSON.stringify(u)); } catch (e) { /* sem armazenamento */ } };
+  const limpar = () => { mem = null; ['vi:alimentos', 'vi:historico', 'vi:usuario', 'vi:config', 'vi:alexa'].forEach(k => { try { localStorage.removeItem(k); } catch (e) { /* ignora */ } }); };
+  return { config, salvarConfig, salvarUsuario, limpar, historico, registrar, usuario, load, save, dias, status, ring, item, esc, toast, addDias };
 })();

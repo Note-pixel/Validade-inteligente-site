@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+<title>Ler código · Validade Inteligente</title>
+</head>
+<body data-pagina="escanear">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main class="principal" id="conteudo">
+  <header class="cabecalho topo"><button class="botao-icone" type="button" data-voltar data-alternativa="cadastrar.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Ler código</h1><p class="texto-suave">Código de barras, QR Code ou digitando</p></div></header>
+  <div class="formulario-pagina">
+    <section class="cartao" aria-labelledby="titulo-camera">
+      <h2 id="titulo-camera">Usar a câmera</h2>
+      <div class="leitor" id="leitor"></div>
+      <p class="texto-suave afastar-vertical" id="mensagem-leitor" role="status"></p>
+      <div class="acoes-linha"><button class="botao botao-primario" type="button" id="botao-iniciar">Iniciar câmera</button><button class="botao botao-contorno" type="button" id="botao-parar" hidden>Parar</button></div>
+    </section>
+    <section aria-labelledby="titulo-digitar">
+      <form class="cartao" id="formulario-codigo" novalidate>
+        <h2 id="titulo-digitar">Ou digite o código</h2>
+        <div class="campo"><label for="codigo">Código de barras ou texto do QR Code</label><input id="codigo" type="text" inputmode="numeric" placeholder="Ex.: 7891234567890" autocomplete="off"><span class="erro" id="erro-codigo" role="alert"></span></div>
+        <button class="botao botao-primario largura-total" type="submit">Buscar produto</button>
+      </form>
+      <article class="cartao afastar-topo" id="resultado-codigo" hidden>
+        <img class="imagem-vazio imagem-produto" src="" alt="Imagem do produto lido">
+        <h3 id="resultado-titulo"></h3><p class="texto-suave texto-resultado" id="resultado-texto"></p>
+        <a class="botao botao-primario" id="link-resultado" href="cadastrar.html">Usar este produto</a>
+      </article>
+    </section>
+  </div>
+</main>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="js/nucleo.js"></script><script src="js/escanear.js"></script>
+</body>
+</html>

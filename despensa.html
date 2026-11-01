@@ -5,26 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/estilo.css">
 <title>Despensa · Validade Inteligente</title>
 </head>
-<body data-page="despensa">
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<div class="shell">
-<aside class="side"><a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><nav aria-label="Principal"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a></nav><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></aside>
-<nav class="tabbar" aria-label="Navegação"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a class="fab" href="cadastrar.html" aria-label="Adicionar alimento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a><a href="despensa.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a></nav>
-<main class="main" id="conteudo">
-  <header class="head topo"><button class="icon-btn" type="button" data-voltar data-fallback="inicio.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Despensa</h1><p class="muted" id="contagem"></p></div></header>
-  <form id="form-busca" role="search" class="field" style="max-width:520px">
+<body data-pagina="despensa">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main class="principal" id="conteudo">
+  <header class="cabecalho topo"><button class="botao-icone" type="button" data-voltar data-alternativa="index.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Despensa</h1><p class="texto-suave" id="contagem"></p></div></header>
+  <form id="formulario-busca" role="search" class="campo limite-busca">
     <label for="busca">Buscar alimento</label>
     <input id="busca" type="search" placeholder="Ex.: tomate" autocomplete="off">
   </form>
-  <div class="fchips" id="filtros" role="group" aria-label="Filtros"></div>
+  <div class="filtros" id="filtros" role="group" aria-label="Filtros da despensa"></div>
   <div id="grupos" aria-live="polite"></div>
-  <div class="card vazio" id="vazio" hidden><h3>Nada por aqui</h3><p class="muted">Nenhum alimento encontrado.</p><p style="margin-top:16px"><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></p></div>
+  <div class="cartao vazio" id="vazio" hidden><img class="imagem-vazio" src="" alt="Cesta de alimentos vazia"><h3>Nada por aqui</h3><p class="texto-suave">Nenhum alimento encontrado.</p><p class="afastar-topo"><a class="botao botao-primario" href="cadastrar.html">Adicionar alimento</a></p></div>
 </main>
-</div>
-<script src="js/app.js"></script><script src="js/despensa.js"></script>
-<script src="js/transicao.js"></script>
+<script src="js/nucleo.js"></script><script src="js/despensa.js"></script>
 </body>
 </html>

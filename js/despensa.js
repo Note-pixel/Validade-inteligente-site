@@ -42,6 +42,8 @@ document.getElementById('grupos').addEventListener('click', e => {
   if (!b) return;
   const id = Number(b.dataset.id);
   const item = VI.load().find(a => a.id === id);
+  if (!item) return;
+  VI.registrar(b.dataset.acao === 'consumir' ? 'c' : 'd', item.nome);
   VI.save(VI.load().filter(a => a.id !== id));
   VI.toast(b.dataset.acao === 'consumir' ? `${item.nome} marcado como consumido` : `${item.nome} descartado`);
   render();

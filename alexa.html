@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<title>Alexa · Validade Inteligente</title>
+</head>
+<body data-page="alexa">
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+<div class="shell">
+<aside class="side"><a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><nav aria-label="Principal"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="receitas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a1 1 0 0 1 1-1h7v16H5a1 1 0 0 1-1-1zM12 4h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/></svg><span>Receitas</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a><a href="impacto.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Meu impacto</span></a><a href="alexa.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span>Alexa</span></a><a href="perfil.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg><span>Perfil</span></a></nav><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></aside>
+<nav class="tabbar" aria-label="Navegação"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a class="fab" href="cadastrar.html" aria-label="Adicionar alimento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a><a href="receitas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a1 1 0 0 1 1-1h7v16H5a1 1 0 0 1-1-1zM12 4h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/></svg><span>Receitas</span></a><a href="perfil.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg><span>Perfil</span></a></nav>
+<main class="main" id="conteudo">
+  <header class="head topo"><button class="icon-btn" type="button" data-voltar data-fallback="inicio.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Alexa</h1><p class="muted">Cadastre alimentos por voz</p></div></header>
+  <div class="cols">
+    <section>
+      <article class="card" style="background:var(--lime-s);box-shadow:none">
+        <h2 id="st-titulo" style="margin-bottom:6px">Alexa não vinculada</h2>
+        <p class="muted" id="st-texto" style="margin-bottom:18px"></p>
+        <button class="btn primary" type="button" id="btn-link">Vincular com a Alexa</button>
+      </article>
+      <h2 style="margin-top:28px">Como funciona</h2>
+      <ol class="stack" style="padding-left:20px;list-style:decimal;color:var(--mut)">
+        <li>Vincule a Alexa com o botão acima.</li>
+        <li>Fale ou digite um comando.</li>
+        <li>O alimento entra na despensa com a validade informada.</li>
+      </ol>
+      <p class="dica">Nesta versão do site, a Alexa funciona em modo demonstração, direto no navegador. A skill oficial da Amazon exige um servidor próprio.</p>
+    </section>
+    <section class="voz" id="area-voz" hidden aria-label="Falar com a Alexa">
+      <h2>Fale ou digite um comando</h2>
+      <p class="muted" id="aviso-voz" hidden>Este navegador não reconhece voz. Digite o comando abaixo (o Chrome oferece voz).</p>
+      <form id="form-cmd" class="voz-row">
+        <button class="mic" type="button" id="btn-mic" aria-label="Falar um comando"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+        <div class="field"><label for="cmd">Comando</label><input id="cmd" type="text" placeholder="Ex.: adicione dois ovos que vencem dia 20" autocomplete="off"></div>
+        <button class="btn primary sm" type="submit">Enviar</button>
+      </form>
+      <div class="exemplos" id="exemplos" aria-label="Exemplos de comandos">
+        <button type="button" data-cmd="Alexa, peça ao Validade Inteligente para adicionar leite">Adicionar leite</button>
+        <button type="button" data-cmd="Alexa, adicione dois ovos que vencem dia 20">Adicionar dois ovos que vencem dia 20</button>
+        <button type="button" data-cmd="Alexa, o que vence hoje na minha despensa?">O que vence hoje?</button>
+      </div>
+      <ul class="conversa" id="conversa" aria-live="polite"></ul>
+    </section>
+  </div>
+</main>
+</div>
+<script src="js/app.js"></script><script src="js/alexa.js"></script>
+<script src="js/transicao.js"></script>
+</body>
+</html>

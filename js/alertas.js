@@ -11,7 +11,7 @@ function card(a) {
   return `<li class="item s-${s.k}"><div class="tile" aria-hidden="true">${VI.esc(a.nome.charAt(0).toUpperCase())}</div><div class="info"><h3>${VI.esc(mensagem(a, d))}</h3><p class="muted">${VI.esc(a.qtd)} · ${VI.esc(a.local)}</p><div class="acts"><button type="button" class="btn sm ghost" data-id="${a.id}" data-acao="consumir">Consumido</button><button type="button" class="btn sm danger" data-id="${a.id}" data-acao="descartar">Descartar</button></div></div>${VI.ring(d)}</li>`;
 }
 function render() {
-  const urgentes = VI.load().filter(a => VI.dias(a.validade) <= 7).sort((a, b) => VI.dias(a.validade) - VI.dias(b.validade));
+  const urgentes = VI.load().filter(a => VI.dias(a.validade) <= VI.config().antecedencia).sort((a, b) => VI.dias(a.validade) - VI.dias(b.validade));
   document.getElementById('resumo').textContent = urgentes.length ? `${urgentes.length} ${urgentes.length === 1 ? 'alimento precisa' : 'alimentos precisam'} da sua atenção.` : '';
   document.getElementById('grupos').innerHTML = GRUPOS.map(([k, titulo, regra]) => {
     const g = urgentes.filter(a => regra(VI.dias(a.validade)));
@@ -23,6 +23,8 @@ document.getElementById('grupos').addEventListener('click', e => {
   const b = e.target.closest('button[data-acao]');
   if (!b) return;
   const id = Number(b.dataset.id), a = VI.load().find(x => x.id === id);
+  if (!a) return;
+  VI.registrar(b.dataset.acao === 'consumir' ? 'c' : 'd', a.nome);
   VI.save(VI.load().filter(x => x.id !== id));
   VI.toast(b.dataset.acao === 'consumir' ? `${a.nome} marcado como consumido` : `${a.nome} descartado`);
   render();
