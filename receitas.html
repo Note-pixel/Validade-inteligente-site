@@ -5,27 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/estilo.css">
 <title>Receitas · Validade Inteligente</title>
 </head>
-<body data-page="receitas">
-<a class="skip" href="#conteudo">Pular para o conteúdo</a>
-<div class="shell">
-<aside class="side"><a class="brand" href="index.html"><span class="logo" aria-hidden="true">V</span>Validade Inteligente</a><nav aria-label="Principal"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a href="receitas.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a1 1 0 0 1 1-1h7v16H5a1 1 0 0 1-1-1zM12 4h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/></svg><span>Receitas</span></a><a href="alertas.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 17v-6a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Alertas</span></a><a href="impacto.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>Meu impacto</span></a><a href="alexa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span>Alexa</span></a><a href="perfil.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg><span>Perfil</span></a></nav><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></aside>
-<nav class="tabbar" aria-label="Navegação"><a href="inicio.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Início</span></a><a href="despensa.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg><span>Despensa</span></a><a class="fab" href="cadastrar.html" aria-label="Adicionar alimento"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a><a href="receitas.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5a1 1 0 0 1 1-1h7v16H5a1 1 0 0 1-1-1zM12 4h7a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-7"/></svg><span>Receitas</span></a><a href="perfil.html"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 4-7 8-7s8 2.5 8 7"/></svg><span>Perfil</span></a></nav>
-<main class="main" id="conteudo">
-  <header class="head topo"><button class="icon-btn" type="button" data-voltar data-fallback="inicio.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Receitas com o que você tem</h1><p class="muted" id="sub"></p></div></header>
-  <form id="form-receitas" class="card">
+<body data-pagina="receitas">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main class="principal" id="conteudo">
+  <header class="cabecalho topo"><button class="botao-icone" type="button" data-voltar data-alternativa="index.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Receitas</h1><p class="texto-suave" id="subtitulo"></p></div></header>
+  <form id="formulario-receitas" class="cartao" novalidate>
     <h2>Escolha os ingredientes</h2>
-    <p class="muted" style="margin:-8px 0 16px">Começamos pelos que vencem logo. Marque ou desmarque à vontade.</p>
-    <div class="picks" id="picks" role="group" aria-label="Ingredientes da despensa"></div>
-    <p class="err" id="e-picks" role="alert"></p>
-    <button class="btn primary" type="submit">Gerar receitas</button>
+    <p class="texto-suave texto-sob-titulo">Começamos pelos que vencem logo. Marque ou desmarque à vontade.</p>
+    <div class="escolhas" id="ingredientes" role="group" aria-label="Ingredientes da despensa"></div>
+    <p class="erro" id="erro-ingredientes" role="alert"></p>
+    <div class="acoes-linha"><button class="botao botao-primario" type="submit">Gerar receitas</button><button class="botao botao-contorno" type="button" id="botao-ia">Gerar com IA</button></div>
   </form>
-  <section aria-live="polite" style="margin-top:28px"><div id="resultado" class="stack"></div></section>
+  <section class="afastar-topo-grande" aria-live="polite"><div id="resultado" class="pilha"></div></section>
+  <section class="cartao limite-formulario afastar-topo-maior" aria-labelledby="titulo-minha-receita">
+    <h2 id="titulo-minha-receita">Adicionar minha receita</h2>
+    <form id="formulario-minha-receita" novalidate>
+      <div class="duas-colunas">
+        <div class="campo"><label for="nome-receita">Nome da receita</label><input id="nome-receita" type="text" placeholder="Ex.: Bolo de cenoura" autocomplete="off" aria-describedby="erro-receita"></div>
+        <div class="campo"><label for="tempo-receita">Tempo de preparo (minutos)</label><input id="tempo-receita" type="number" min="1" max="600" placeholder="30"></div>
+      </div>
+      <div class="campo"><label for="ingredientes-receita">Ingredientes (separados por vírgula)</label><input id="ingredientes-receita" type="text" placeholder="Ex.: Cenoura, Ovos, Farinha" autocomplete="off"></div>
+      <div class="campo"><label for="passos-receita">Modo de preparo (um passo por linha)</label><textarea id="passos-receita" rows="4" placeholder="Bata tudo no liquidificador."></textarea><span class="erro" id="erro-receita" role="alert"></span></div>
+      <button class="botao botao-primario botao-pequeno" type="submit">Salvar receita</button>
+    </form>
+    <ul class="pilha afastar-topo" id="minhas-receitas"></ul>
+  </section>
+  <div class="colunas afastar-topo-maior">
+    <section aria-labelledby="titulo-historico"><h2 id="titulo-historico">Receitas que já usei</h2><ul class="pilha" id="historico-receitas"></ul></section>
+    <section aria-labelledby="titulo-uso"><h2 id="titulo-uso">Quanto usei de cada ingrediente</h2><ul class="pilha" id="uso-ingredientes"></ul></section>
+  </div>
 </main>
-</div>
-<script src="js/app.js"></script><script src="js/receitas.js"></script>
-<script src="js/transicao.js"></script>
+<script src="js/nucleo.js"></script><script src="js/receitas.js"></script>
 </body>
 </html>

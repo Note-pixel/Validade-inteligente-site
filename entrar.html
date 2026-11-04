@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+<title>Entrar · Validade Inteligente</title>
+</head>
+<body data-pagina="entrada">
+<main class="entrada" id="conteudo">
+  <div class="entrada-conteudo">
+    <a class="marca" href="entrar.html"><img class="logo" src="" alt="Logo do Validade Inteligente"><span>Validade Inteligente</span></a>
+    <form class="cartao" id="formulario-entrar" novalidate>
+      <h1>Bem-vindo de volta</h1><p class="texto-suave subtitulo">Entre para ver sua despensa.</p>
+      <div class="campo"><label for="email">E-mail</label><input id="email" type="email" placeholder="voce@email.com" autocomplete="email" aria-describedby="erro-email"><span class="erro" id="erro-email" role="alert"></span></div>
+      <div class="campo"><label for="senha">Senha</label><input id="senha" type="password" placeholder="Digite sua senha" autocomplete="current-password" aria-describedby="erro-senha"><span class="erro" id="erro-senha" role="alert"></span></div>
+      <button class="botao botao-primario largura-total" type="submit">Entrar</button>
+      <p class="rodape-formulario">Não tem conta? <a href="criar-conta.html">Criar conta</a></p>
+    </form>
+  </div>
+</main>
+<script src="js/nucleo.js"></script><script src="js/entrar.js"></script>
+</body>
+</html>

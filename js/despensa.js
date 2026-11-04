@@ -1,51 +1,51 @@
 'use strict';
-const FILTROS = ['Todos', 'Vencidos', 'Vencendo', 'Geladeira', 'Armário', 'Freezer'];
-const GRUPOS = [
-  ['ex', 'Vencidos', d => d < 0], ['so', 'Vence logo', d => d >= 0 && d <= 3],
-  ['wn', 'Atenção', d => d >= 4 && d <= 7], ['ok', 'Seguros', d => d > 7]
+const nomesFiltros = ['Todos', 'Vencidos', 'Vencendo', 'Geladeira', 'Armário', 'Freezer'];
+const grupos = [
+  { classe: 'situacao-vencido', titulo: 'Vencidos', regra: dias => dias < 0 },
+  { classe: 'situacao-breve', titulo: 'Vence logo', regra: dias => dias >= 0 && dias <= 3 },
+  { classe: 'situacao-atencao', titulo: 'Atenção', regra: dias => dias >= 4 && dias <= 7 },
+  { classe: 'situacao-seguro', titulo: 'Seguros', regra: dias => dias > 7 }
 ];
-let filtro = 'Todos';
+let filtroAtual = 'Todos';
 const campoBusca = document.getElementById('busca');
-
-function passa(a, termo) {
-  const d = VI.dias(a.validade);
-  if (termo && !a.nome.toLowerCase().includes(termo)) return false;
-  if (filtro === 'Vencidos') return d < 0;
-  if (filtro === 'Vencendo') return d >= 0 && d <= 3;
-  if (filtro !== 'Todos') return a.local === filtro;
+const aplicarFiltro = (alimento, termo) => {
+  const dias = diasRestantes(alimento.validade);
+  if (termo && !alimento.nome.toLowerCase().includes(termo)) return false;
+  if (filtroAtual === 'Vencidos') return dias < 0;
+  if (filtroAtual === 'Vencendo') return dias >= 0 && dias <= 3;
+  if (filtroAtual !== 'Todos') return alimento.local === filtroAtual;
   return true;
-}
-
-function render() {
+};
+const desenhar = () => {
   const termo = campoBusca.value.trim().toLowerCase();
-  const visiveis = VI.load().filter(a => passa(a, termo)).sort((a, b) => VI.dias(a.validade) - VI.dias(b.validade));
+  const visiveis = banco.alimentos().filter(alimento => aplicarFiltro(alimento, termo)).sort((a, b) => diasRestantes(a.validade) - diasRestantes(b.validade));
   document.getElementById('contagem').textContent = `${visiveis.length} ${visiveis.length === 1 ? 'alimento' : 'alimentos'} · ordenados por validade`;
-  document.getElementById('grupos').innerHTML = GRUPOS.map(([k, titulo, regra]) => {
-    const g = visiveis.filter(a => regra(VI.dias(a.validade)));
-    return g.length ? `<h2 class="grupo s-${k}"><i></i>${titulo} <small>${g.length}</small></h2><ul class="stack">${g.map(a => VI.item(a, true)).join('')}</ul>` : '';
+  document.getElementById('grupos').innerHTML = grupos.map(grupo => {
+    const itens = visiveis.filter(alimento => grupo.regra(diasRestantes(alimento.validade)));
+    return itens.length ? `<h2 class="grupo ${grupo.classe}"><i></i>${grupo.titulo} <small>${itens.length}</small></h2><ul class="pilha">${itens.map(alimento => cartaoAlimento(alimento, true)).join('')}</ul>` : '';
   }).join('');
   document.getElementById('vazio').hidden = visiveis.length > 0;
-}
-
-document.getElementById('filtros').innerHTML = FILTROS.map(f => `<button type="button" class="fchip" aria-pressed="${f === filtro}">${f}</button>`).join('');
-document.getElementById('filtros').addEventListener('click', e => {
-  const b = e.target.closest('.fchip');
-  if (!b) return;
-  filtro = b.textContent;
-  document.querySelectorAll('.fchip').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
-  render();
+};
+const caixaFiltros = document.getElementById('filtros');
+caixaFiltros.innerHTML = nomesFiltros.map(nome => `<button type="button" class="filtro" aria-pressed="${nome === filtroAtual}">${nome}</button>`).join('');
+caixaFiltros.addEventListener('click', evento => {
+  const botao = evento.target.closest('.filtro');
+  if (!botao) return;
+  filtroAtual = botao.textContent;
+  document.querySelectorAll('.filtro').forEach(outro => outro.setAttribute('aria-pressed', String(outro === botao)));
+  desenhar();
 });
-document.getElementById('form-busca').addEventListener('submit', e => { e.preventDefault(); render(); });
-campoBusca.addEventListener('input', render);
-document.getElementById('grupos').addEventListener('click', e => {
-  const b = e.target.closest('button[data-acao]');
-  if (!b) return;
-  const id = Number(b.dataset.id);
-  const item = VI.load().find(a => a.id === id);
-  if (!item) return;
-  VI.registrar(b.dataset.acao === 'consumir' ? 'c' : 'd', item.nome);
-  VI.save(VI.load().filter(a => a.id !== id));
-  VI.toast(b.dataset.acao === 'consumir' ? `${item.nome} marcado como consumido` : `${item.nome} descartado`);
-  render();
+document.getElementById('formulario-busca').addEventListener('submit', evento => { evento.preventDefault(); desenhar(); });
+campoBusca.addEventListener('input', desenhar);
+document.getElementById('grupos').addEventListener('click', evento => {
+  const botao = evento.target.closest('button[data-acao]');
+  if (!botao) return;
+  const id = Number(botao.dataset.id);
+  const alimento = banco.alimentos().find(item => item.id === id);
+  if (!alimento) return;
+  banco.registrar(botao.dataset.acao === 'consumir' ? 'consumido' : 'descartado', alimento.nome);
+  banco.salvarAlimentos(banco.alimentos().filter(item => item.id !== id));
+  avisar(botao.dataset.acao === 'consumir' ? `${alimento.nome} marcado como consumido` : `${alimento.nome} descartado`);
+  desenhar();
 });
-render();
+desenhar();

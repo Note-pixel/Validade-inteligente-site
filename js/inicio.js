@@ -1,20 +1,25 @@
 'use strict';
-const quem = VI.usuario();
-const sd = document.getElementById('saudacao');
-if (sd) sd.textContent = `Olá, ${quem && quem.nome ? quem.nome.split(' ')[0] : 'Milena'}`;
-const itens = VI.load().slice().sort((a, b) => VI.dias(a.validade) - VI.dias(b.validade));
-const total = { ok: 0, so: 0, ex: 0 };
-itens.forEach(a => { const k = VI.status(VI.dias(a.validade)).k; total[k === 'wn' ? 'ok' : k]++; });
-Object.keys(total).forEach(k => { document.getElementById(`n-${k}`).textContent = total[k]; });
-
-const hero = document.getElementById('hero');
+const saudacao = document.getElementById('saudacao');
+if (saudacao) saudacao.textContent = `Olá, ${banco.usuario().nome.split(' ')[0]}`;
+const ordenados = banco.alimentos().slice().sort((a, b) => diasRestantes(a.validade) - diasRestantes(b.validade));
+const totais = { seguro: 0, breve: 0, vencido: 0 };
+ordenados.forEach(alimento => {
+  const classe = situacao(diasRestantes(alimento.validade)).classe;
+  if (classe === 'situacao-vencido') totais.vencido++;
+  else if (classe === 'situacao-breve') totais.breve++;
+  else totais.seguro++;
+});
+document.getElementById('total-seguros').textContent = totais.seguro;
+document.getElementById('total-breve').textContent = totais.breve;
+document.getElementById('total-vencidos').textContent = totais.vencido;
+const destaque = document.getElementById('destaque');
 const lista = document.getElementById('lista');
-const proximo = itens.find(a => VI.dias(a.validade) >= 0) || itens[0];
-
+const proximo = ordenados.find(alimento => diasRestantes(alimento.validade) >= 0) || ordenados[0];
 if (!proximo) {
-  hero.innerHTML = '<div class="card vazio"><h3>Sua despensa está vazia</h3><p class="muted">Adicione seu primeiro alimento para começar.</p><p style="margin-top:16px"><a class="btn primary" href="cadastrar.html">Adicionar alimento</a></p></div>';
+  destaque.innerHTML = '<div class="cartao vazio"><img class="imagem-vazio" src="" alt="Cesta de alimentos vazia"><h3>Sua despensa está vazia</h3><p class="texto-suave">Adicione seu primeiro alimento para começar.</p><p class="afastar-topo"><a class="botao botao-primario" href="cadastrar.html">Adicionar alimento</a></p></div>';
 } else {
-  const d = VI.dias(proximo.validade), s = VI.status(d);
-  hero.innerHTML = `<article class="hero s-${s.k}"><div><p class="eyebrow">Próximo a vencer</p><h3>${VI.esc(proximo.nome)}</h3><p class="muted">${VI.esc(proximo.qtd)} · ${VI.esc(proximo.local)}</p><span class="chip"><i></i>${s.t}</span><br><a class="btn primary sm" href="despensa.html">Ver na despensa</a></div>${VI.ring(d)}</article>`;
-  lista.innerHTML = itens.filter(a => a !== proximo).slice(0, 3).map(a => VI.item(a)).join('');
+  const dias = diasRestantes(proximo.validade);
+  const estado = situacao(dias);
+  destaque.innerHTML = `<article class="destaque ${estado.classe}"><div><p class="destaque-rotulo">Próximo a vencer</p><h3>${escapar(proximo.nome)}</h3><p class="texto-suave">${escapar(proximo.quantidade)} · ${escapar(proximo.local)}</p><span class="etiqueta"><i></i>${estado.texto}</span><br><a class="botao botao-primario botao-pequeno" href="despensa.html">Ver na despensa</a></div>${anel(dias)}</article>`;
+  lista.innerHTML = ordenados.filter(alimento => alimento !== proximo).slice(0, 3).map(alimento => cartaoAlimento(alimento)).join('');
 }

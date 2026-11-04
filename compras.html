@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+<title>Lista de compras · Validade Inteligente</title>
+</head>
+<body data-pagina="compras">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main class="principal" id="conteudo">
+  <header class="cabecalho topo"><button class="botao-icone" type="button" data-voltar data-alternativa="index.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Lista de compras</h1><p class="texto-suave" id="contagem"></p></div></header>
+  <form class="cartao limite-formulario afastar-baixo-grande" id="formulario-compras" novalidate>
+    <div class="duas-colunas">
+      <div class="campo"><label for="item">Item</label><input id="item" type="text" placeholder="Ex.: Azeite" autocomplete="off" aria-describedby="erro-item"><span class="erro" id="erro-item" role="alert"></span></div>
+      <div class="campo"><label for="quantidade">Quantidade</label><input id="quantidade" type="text" placeholder="Ex.: 1 garrafa" autocomplete="off"></div>
+    </div>
+    <button class="botao botao-primario botao-pequeno" type="submit">Adicionar à lista</button>
+  </form>
+  <section class="afastar-baixo-grande" aria-label="Sugestões" id="area-sugestoes" hidden><h2>Sugestões</h2><div class="filtros" id="sugestoes"></div></section>
+  <ul class="pilha limite-formulario" id="lista-compras" aria-live="polite"></ul>
+  <div class="cartao vazio" id="vazio" hidden><img class="imagem-vazio" src="" alt="Carrinho de compras vazio"><h3>Sua lista está vazia</h3><p class="texto-suave">Adicione itens acima.</p></div>
+</main>
+<script src="js/nucleo.js"></script><script src="js/compras.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+<title>Ajuda · Validade Inteligente</title>
+</head>
+<body data-pagina="ajuda">
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<main class="principal" id="conteudo">
+  <header class="cabecalho topo"><button class="botao-icone" type="button" data-voltar data-alternativa="index.html" aria-label="Voltar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><div><h1>Ajuda</h1><p class="texto-suave" id="subtitulo">Respostas rápidas</p></div></header>
+  <form class="campo limite-busca" id="formulario-ajuda" role="search"><label for="busca-ajuda">Buscar uma dúvida</label><input id="busca-ajuda" type="search" placeholder="Ex.: validade" autocomplete="off"></form>
+  <div class="pilha faq limite-faq" id="perguntas">
+    <details><summary>Como o site sabe a validade do produto?</summary><p>Ao ler o código de barras, buscamos o nome do produto. A data de validade é sempre a que está na embalagem: confira e confirme antes de salvar.</p></details>
+    <details><summary>Consumir até ou consumir preferencialmente antes de?</summary><p>"Consumir até" é um prazo de segurança: depois da data, não consuma. "Consumir preferencialmente antes de" é um prazo de qualidade: depois dele o sabor e a textura podem mudar. Na dúvida, não consuma.</p></details>
+    <details><summary>Posso usar o site sem a Alexa?</summary><p>Sim. Você pode cadastrar digitando, lendo o código de barras ou o QR Code. A Alexa funciona em modo demonstração, direto no navegador.</p></details>
+    <details><summary>Como mudo a antecedência dos alertas?</summary><p>Abra o Perfil, vá em Alertas, escolha quantos dias antes quer ser avisado e toque em Salvar alertas.</p></details>
+    <details><summary>As receitas da IA são seguras?</summary><p>São sugestões geradas automaticamente. Confira os ingredientes e o modo de preparo antes de cozinhar. Sem a chave da IA no Perfil, o site mostra receitas locais.</p></details>
+    <details><summary>Onde ficam guardados meus dados?</summary><p>Somente neste navegador, no localStorage. Se você limpar os dados do navegador ou usar o botão Apagar todos os dados no Perfil, eles são removidos.</p></details>
+  </div>
+  <div class="cartao vazio afastar-topo" id="vazio" hidden><img class="imagem-vazio" src="" alt="Lupa sem resultados"><h3>Nenhuma resposta encontrada</h3><p class="texto-suave">Tente outra palavra.</p></div>
+</main>
+<script src="js/nucleo.js"></script><script src="js/ajuda.js"></script>
+</body>
+</html>

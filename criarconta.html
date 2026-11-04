@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/estilo.css">
+<title>Criar conta · Validade Inteligente</title>
+</head>
+<body data-pagina="entrada">
+<main class="entrada" id="conteudo">
+  <div class="entrada-conteudo">
+    <a class="marca" href="entrar.html"><img class="logo" src="" alt="Logo do Validade Inteligente"><span>Validade Inteligente</span></a>
+    <form class="cartao" id="formulario-conta" novalidate>
+      <h1>Crie sua conta</h1><p class="texto-suave subtitulo">Leva menos de 1 minuto.</p>
+      <div class="campo"><label for="nome">Nome</label><input id="nome" type="text" placeholder="Como podemos te chamar?" autocomplete="name" aria-describedby="erro-nome"><span class="erro" id="erro-nome" role="alert"></span></div>
+      <div class="campo"><label for="email">E-mail</label><input id="email" type="email" placeholder="voce@email.com" autocomplete="email" aria-describedby="erro-email"><span class="erro" id="erro-email" role="alert"></span></div>
+      <div class="campo"><label for="senha">Senha</label><input id="senha" type="password" placeholder="Mínimo de 8 caracteres" autocomplete="new-password" aria-describedby="erro-senha"><div class="forca" id="forca" data-nivel="0" aria-hidden="true"><i></i><i></i><i></i></div><span class="erro" id="erro-senha" role="alert"></span></div>
+      <div class="campo"><label for="confirmacao">Confirmar senha</label><input id="confirmacao" type="password" placeholder="Repita a senha" autocomplete="new-password" aria-describedby="erro-confirmacao"><span class="erro" id="erro-confirmacao" role="alert"></span></div>
+      <div class="campo"><label class="marcar" for="termos"><input id="termos" type="checkbox" aria-describedby="erro-termos"><span>Li e aceito os Termos de uso e a Política de Privacidade.</span></label><span class="erro" id="erro-termos" role="alert"></span></div>
+      <button class="botao botao-primario largura-total" type="submit">Criar conta</button>
+      <p class="rodape-formulario">Já tenho conta. <a href="entrar.html">Entrar</a></p>
+    </form>
+  </div>
+</main>
+<script src="js/nucleo.js"></script><script src="js/criar-conta.js"></script>
+</body>
+</html>
